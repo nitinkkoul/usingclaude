@@ -1,0 +1,13 @@
+[     562ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/inventory.html:1
+[    1445ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[    1801ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/checkout-step-one.html:1
+[    2068ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[    2146ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/cart.html:1
+[    2373ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[    2642ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/inventory-item.html?id=4:1
+[    2882ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[    2909ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.saucedemo.com/inventory.html:1
+[    3101ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[    8436ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[   42604ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1
+[   50819ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:1

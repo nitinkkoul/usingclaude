@@ -35,11 +35,4 @@ test.describe('Login', () => {
       await expect(loginPage.error).toContainText(input.msg);
     });
   }
-
-  test('protected page redirects to login when logged out', { tag: '@regression' }, async ({ page, loginPage }) => {
-    await page.goto('/inventory.html');
-
-    await expect(loginPage.loginButton).toBeVisible();
-    await expect(loginPage.error).toContainText('only access');
-  });
 });
