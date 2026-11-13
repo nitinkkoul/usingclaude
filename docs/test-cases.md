@@ -125,7 +125,7 @@
   4. On 'Your Cart', click 'Remove' next to Sauce Labs Bike Light.
   5. Check the cart list and the cart badge.
 - **Expected Result**: After step 2 the products are ordered Sauce Labs Fleece Jacket ($49.99), Sauce Labs Backpack ($29.99), Sauce Labs Bolt T-Shirt ($15.99), Test.allTheThings() T-Shirt (Red) ($15.99), Sauce Labs Bike Light ($9.99), Sauce Labs Onesie ($7.99), and the Bike Light still shows 'Remove' with the badge at 1. After step 3 the page title is 'Your Cart' and it lists only Sauce Labs Bike Light ($9.99, QTY 1). After step 4 no items are listed and the cart badge is gone (cart icon reads 'Cart, empty'); 'Continue Shopping' and 'Checkout' are still shown.
-- **Automation**: Candidate @regression
+- **Automation**: Automated: tests/ui/inventory.spec.ts › cart keeps item after sorting and empties after Remove
 
 ### TC-101: Login error message is programmatically exposed and readable by assistive tech
 - **Module**: Login
@@ -188,6 +188,19 @@
   1. Send GET /posts with query userId=2.
 - **Expected Result**: Status is OK; at least one post is returned and every post has userId 2.
 - **Automation**: Automated: tests/api/posts.spec.ts › GET posts filtered by user
+
+### TC-106: Added item stays in cart after Z to A sort
+- **Module**: Inventory
+- **Category**: Business Rule
+- **Priority**: P2 medium
+- **Preconditions**: Logged in as standard_user; cart is empty; on the Products page (default sort 'Name (A to Z)').
+- **Test Data**: Product = Sauce Labs Backpack ($29.99); sort option = Name (Z to A)
+- **Steps**:
+  1. Click 'Add to cart' on Sauce Labs Backpack; its button changes to 'Remove' and the cart icon reads 'Cart, 1 items'.
+  2. In the 'Sort products' dropdown choose 'Name (Z to A)'.
+  3. Read the product names top to bottom and check the Backpack button and the cart badge.
+- **Expected Result**: After step 2 the products are ordered Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie, Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt, Sauce Labs Bike Light, Sauce Labs Backpack. Test.allTheThings() T-Shirt (Red) is first and Sauce Labs Backpack is last; the Backpack still shows 'Remove' and the cart badge stays at 1.
+- **Automation**: Candidate @regression
 
 ### TC-200: Invalid credentials and empty required fields display consistent, understandable messaging
 - **Module**: Login

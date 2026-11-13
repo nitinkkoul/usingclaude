@@ -1,0 +1,31 @@
+1
+00:00:00,012 --> 00:00:07,477
+Test case 106. An item added to the cart stays in the cart after sorting Z to A.
+
+2
+00:00:08,515 --> 00:00:13,205
+We start on the Products page, sorted Name A to Z.
+
+3
+00:00:13,237 --> 00:00:18,292
+Step 1. Add the Sauce Labs Backpack to the cart.
+
+4
+00:00:18,473 --> 00:00:23,148
+The button now says Remove, and the cart badge shows 1.
+
+5
+00:00:23,156 --> 00:00:29,391
+Step 2. Choose Name, Z to A, in the sort dropdown.
+
+6
+00:00:29,462 --> 00:00:37,617
+Step 3. Check the order. The Red T-Shirt is now first, and the Backpack is last.
+
+7
+00:00:37,677 --> 00:00:45,632
+The Backpack still says Remove, and the cart badge still shows 1. Sorting did not change the cart.
+
+8
+00:00:45,650 --> 00:00:50,140
+Result: test case 106 passes.

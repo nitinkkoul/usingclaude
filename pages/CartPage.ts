@@ -19,6 +19,11 @@ export class CartPage extends BasePage {
     await this.page.goto('/cart.html');
   }
 
+  /** Click "Remove" on one cart row, found by its product name. */
+  async removeItem(name: string) {
+    await this.cartItems.filter({ hasText: name }).getByRole('button', { name: 'Remove' }).click();
+  }
+
   async checkout() {
     await this.checkoutButton.click();
   }

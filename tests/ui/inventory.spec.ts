@@ -17,6 +17,33 @@ test.describe('Products & cart', () => {
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
   });
 
+  // TC-010
+  test('cart keeps item after sorting and empties after Remove', { tag: '@regression' }, async ({ inventoryPage, cartPage }) => {
+    const { bikeLight } = products;
+
+    // 1. Add Sauce Labs Bike Light
+    await inventoryPage.addToCart(bikeLight.name);
+    await expect(inventoryPage.cartButton(bikeLight.name)).toHaveText('Remove');
+    await expect(inventoryPage.cartBadge).toHaveText('1');
+
+    // 2. Sort by Price (high to low): products reorder, the cart is unchanged
+    await inventoryPage.sortBy('hilo');
+    const prices = await inventoryPage.getPrices();
+    expect(prices).toEqual([...prices].sort((a, b) => b - a));
+    await expect(inventoryPage.cartButton(bikeLight.name)).toHaveText('Remove');
+    await expect(inventoryPage.cartBadge).toHaveText('1');
+
+    // 3. Open the cart: only the Bike Light is listed
+    await inventoryPage.openCart();
+    await expect(cartPage.title).toHaveText('Your Cart');
+    await expect(cartPage.itemNames).toHaveText([bikeLight.name]);
+
+    // 4. Remove it from the cart page: cart is empty and the badge is gone
+    await cartPage.removeItem(bikeLight.name);
+    await expect(cartPage.cartItems).toHaveCount(0);
+    await expect(cartPage.cartBadge).toBeHidden();
+  });
+
   test('sorts by name Z to A', { tag: '@regression' }, async ({ inventoryPage }) => {
     await inventoryPage.sortBy('za');
 

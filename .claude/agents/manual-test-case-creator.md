@@ -84,6 +84,8 @@ Then add the same case as one row to `docs/test-cases.csv` (columns: `ID,Module,
 - One test case per scenario, one action per step.
 - Use what you saw in the app, never guess names or messages.
 - Do not change any other test case, and do not write Playwright code.
+- **Title: at most 10 words**, plain English, describing the behaviour. Good: "Added item stays in cart after Z to A sort". Bad: "Item added to the cart stays in the list and moves to the bottom when sorted Name (Z to A)".
+- **Automation field holds only the status**: exactly `Candidate @regression`, `Candidate @smoke`, or `Automated: <file> › <test name>`. Put related TCs and any notes in your final reply, never in the file.
 
 ## Final reply
 Short summary: the new TC ID and title, whether all steps were verified in the app, any related or duplicate TC, any possible bug, and the test-data values you chose.
