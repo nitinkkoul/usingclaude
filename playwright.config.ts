@@ -10,7 +10,8 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 5_000 },
 
-  reporter: [['list'], ['html', { open: 'never' }]],
+  // results.json feeds the "Last test run" card on the coverage dashboard
+  reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'reports/results.json' }]],
 
   use: {
     // saucedemo puts data-test="..." on its elements, so getByTestId() reads that attribute

@@ -13,7 +13,8 @@
     "test:debug": "playwright test --ui",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit",
-    "bug-videos": "node scripts/record-bug-videos.mjs"
+    "bug-videos": "node scripts/record-bug-videos.mjs",
+    "test:dashboard": "node scripts/test-and-open-dashboard.mjs"
   },
   "keywords": [],
   "author": "",

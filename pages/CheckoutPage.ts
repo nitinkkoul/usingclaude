@@ -11,6 +11,8 @@ export class CheckoutPage extends BasePage {
   readonly continueButton: Locator;
   readonly cancelButton: Locator;
   readonly error: Locator;
+  readonly paymentInfo: Locator;
+  readonly shippingInfo: Locator;
   readonly subtotal: Locator;
   readonly tax: Locator;
   readonly total: Locator;
@@ -25,6 +27,8 @@ export class CheckoutPage extends BasePage {
     this.continueButton = page.getByTestId('continue');
     this.cancelButton = page.getByTestId('cancel');
     this.error = page.getByTestId('error');
+    this.paymentInfo = page.getByTestId('payment-info-value');
+    this.shippingInfo = page.getByTestId('shipping-info-value');
     this.subtotal = page.getByTestId('subtotal-label');
     this.tax = page.getByTestId('tax-label');
     this.total = page.getByTestId('total-label');
