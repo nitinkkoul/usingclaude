@@ -26,6 +26,11 @@ export class InventoryPage extends BasePage {
     return this.items.filter({ hasText: name });
   }
 
+  /** The Add to cart / Remove button on one product card. */
+  cartButton(name: string): Locator {
+    return this.product(name).getByRole('button', { name: /^(Add to cart|Remove)$/ });
+  }
+
   async addToCart(...names: string[]) {
     for (const name of names) {
       await this.product(name).getByRole('button', { name: 'Add to cart' }).click();

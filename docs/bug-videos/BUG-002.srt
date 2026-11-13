@@ -1,0 +1,23 @@
+1
+00:00:00,013 --> 00:00:07,148
+Bug 002. After Reset App State, the cart page still lists the item.
+
+2
+00:00:08,033 --> 00:00:13,393
+Step 1. Add the Sauce Labs Backpack and open the cart.
+
+3
+00:00:13,523 --> 00:00:16,313
+The cart lists one item.
+
+4
+00:00:16,327 --> 00:00:21,472
+Step 2. Open the menu and click Reset App State.
+
+5
+00:00:22,610 --> 00:00:30,650
+Expected: the cart is empty. Actual: the badge is gone, but the Backpack is still listed.
+
+6
+00:00:30,877 --> 00:00:37,742
+After a reload, the item disappears. Workaround: reload the page.

@@ -1,0 +1,27 @@
+1
+00:00:00,014 --> 00:00:07,189
+Bug 001. After Reset App State, the product button still says Remove.
+
+2
+00:00:08,158 --> 00:00:13,213
+Step 1. Add the Sauce Labs Backpack to the cart.
+
+3
+00:00:13,276 --> 00:00:17,936
+The cart badge shows 1, and the button now says Remove.
+
+4
+00:00:17,943 --> 00:00:23,088
+Step 2. Open the menu and click Reset App State.
+
+5
+00:00:24,159 --> 00:00:33,584
+Expected: the button changes back to Add to cart. Actual: the cart badge is gone, but the button still says Remove.
+
+6
+00:00:33,591 --> 00:00:38,236
+Only after reloading the page does the button show Add to cart.
+
+7
+00:00:38,713 --> 00:00:42,183
+Workaround: reload the page.

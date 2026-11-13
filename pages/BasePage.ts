@@ -12,8 +12,19 @@ export abstract class BasePage {
   readonly aboutLink: Locator;
   readonly logoutLink: Locator;
   readonly resetAppStateLink: Locator;
+  // Page structure used by screen readers (landmarks + main heading)
+  readonly bannerLandmark: Locator;
+  readonly navigationLandmark: Locator;
+  readonly mainLandmark: Locator;
+  readonly footerLandmark: Locator;
+  readonly mainHeading: Locator;
 
   constructor(protected readonly page: Page) {
+    this.bannerLandmark = page.getByRole('banner');
+    this.navigationLandmark = page.getByRole('navigation');
+    this.mainLandmark = page.getByRole('main');
+    this.footerLandmark = page.getByRole('contentinfo');
+    this.mainHeading = page.getByRole('heading', { level: 1 });
     this.title = page.getByTestId('title');
     this.cartLink = page.getByTestId('shopping-cart-link');
     this.cartBadge = page.getByTestId('shopping-cart-badge');
@@ -31,6 +42,11 @@ export abstract class BasePage {
 
   async openMenu() {
     await this.menuButton.click();
+  }
+
+  async resetAppState() {
+    await this.menuButton.click();
+    await this.resetAppStateLink.click();
   }
 
   async openCart() {

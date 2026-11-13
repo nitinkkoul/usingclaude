@@ -16,6 +16,29 @@ test.describe('Login', () => {
     await expect(inventoryPage.title).toHaveText('Products');
   });
 
+  test('keyboard-only user can log in through labelled controls', { tag: '@smoke' }, async ({ page, loginPage, inventoryPage }) => {
+    // Each control has a clear accessible name
+    await expect(loginPage.username).toHaveAccessibleName('Username');
+    await expect(loginPage.password).toHaveAccessibleName('Password');
+    await expect(loginPage.loginButton).toHaveAccessibleName('Login');
+
+    // Logical focus order, typing and submitting with the keyboard only
+    await page.keyboard.press('Tab');
+    await expect(loginPage.username).toBeFocused();
+    await page.keyboard.type(users.standard.username);
+
+    await page.keyboard.press('Tab');
+    await expect(loginPage.password).toBeFocused();
+    await page.keyboard.type(users.standard.password);
+
+    await page.keyboard.press('Tab');
+    await expect(loginPage.loginButton).toBeFocused();
+    await page.keyboard.press('Enter');
+
+    await expect(page).toHaveURL(/inventory\.html/);
+    await expect(inventoryPage.title).toHaveText('Products');
+  });
+
   test('locked out user sees an error', { tag: '@regression' }, async ({ loginPage }) => {
     await loginPage.login(users.lockedOut.username, users.lockedOut.password);
 

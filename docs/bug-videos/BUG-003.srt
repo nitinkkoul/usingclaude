@@ -1,0 +1,35 @@
+1
+00:00:00,009 --> 00:00:06,379
+Bug 003. Keyboard users cannot see which control has focus.
+
+2
+00:00:07,492 --> 00:00:14,162
+We are on the checkout information form. We will press Tab to move through the controls.
+
+3
+00:00:14,214 --> 00:00:19,619
+Focus is now on the menu button. Nothing on screen shows it.
+
+4
+00:00:19,681 --> 00:00:25,071
+Focus is now on First Name. Nothing on screen shows it.
+
+5
+00:00:25,103 --> 00:00:30,483
+Focus is now on Last Name. Nothing on screen shows it.
+
+6
+00:00:30,526 --> 00:00:36,011
+Focus is now on Postal Code. Nothing on screen shows it.
+
+7
+00:00:36,045 --> 00:00:41,240
+Focus is now on Cancel. Nothing on screen shows it.
+
+8
+00:00:41,286 --> 00:00:46,576
+Focus is now on Continue. Nothing on screen shows it.
+
+9
+00:00:46,582 --> 00:00:56,362
+Expected: a visible outline or highlight on the focused control. Actual: the focus outline is removed and nothing replaces it.

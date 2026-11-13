@@ -1,0 +1,19 @@
+1
+00:00:00,011 --> 00:00:06,636
+Bug 004. Logged-in pages have no headings for screen-reader users.
+
+2
+00:00:07,831 --> 00:00:15,691
+The title "Products" looks like a heading, but it is plain text. Headings on this page: none.
+
+3
+00:00:15,883 --> 00:00:23,633
+The title "Your Cart" looks like a heading, but it is plain text. Headings on this page: none.
+
+4
+00:00:23,830 --> 00:00:33,095
+The title "Checkout: Your Information" looks like a heading, but it is plain text. Headings on this page: none.
+
+5
+00:00:33,110 --> 00:00:43,565
+Expected: each page has one main heading with its title. Actual: no headings at all, so screen-reader users cannot jump to the title.

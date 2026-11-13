@@ -1,0 +1,8 @@
+{
+  "_note": "Logged-in pages checked for screen-reader structure (TC-503).",
+  "pages": [
+    { "name": "inventory", "path": "/inventory.html" },
+    { "name": "cart", "path": "/cart.html" },
+    { "name": "checkout information", "path": "/checkout-step-one.html" }
+  ]
+}

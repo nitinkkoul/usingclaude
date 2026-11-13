@@ -12,7 +12,8 @@
     "test:headed": "playwright test --project=chromium --headed",
     "test:debug": "playwright test --ui",
     "report": "playwright show-report",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "bug-videos": "node scripts/record-bug-videos.mjs"
   },
   "keywords": [],
   "author": "",
