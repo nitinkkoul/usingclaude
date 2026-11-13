@@ -147,30 +147,6 @@ const BUGS = {
     },
   },
 
-  // ---------- test case walkthroughs (output: docs/test-case-videos/) ----------
-  'TC-106': {
-    title: 'Added item stays in cart after Z to A sort',
-    async run(page, say) {
-      await say('Test case 106. An item added to the cart stays in the cart after sorting Z to A.');
-      await login(page);
-      await say('We start on the Products page, sorted Name A to Z.');
-      await say('Step 1. Add the Sauce Labs Backpack to the cart.');
-      await backpackButton(page).click();
-      await tid(page, 'shopping-cart-badge').waitFor();
-      check((await backpackButton(page).textContent()) === 'Remove', 'Backpack button did not change to Remove');
-      await say('The button now says Remove, and the cart badge shows 1.');
-      await say('Step 2. Choose Name, Z to A, in the sort dropdown.');
-      await tid(page, 'product-sort-container').selectOption('za');
-      const names = await tid(page, 'inventory-item-name').allTextContents();
-      check(names[0] === 'Test.allTheThings() T-Shirt (Red)', `first item is ${names[0]}`);
-      check(names[names.length - 1] === products.backpack.name, `last item is ${names[names.length - 1]}`);
-      await say('Step 3. Check the order. The Red T-Shirt is now first, and the Backpack is last.');
-      check((await backpackButton(page).textContent()) === 'Remove', 'Backpack lost its Remove state after sorting');
-      check((await tid(page, 'shopping-cart-badge').textContent()) === '1', 'cart badge changed after sorting');
-      await say('The Backpack still says Remove, and the cart badge still shows 1. Sorting did not change the cart.');
-      await say('Result: test case 106 passes.');
-    },
-  },
 };
 
 // ---------- text-to-speech (Windows System.Speech), all clips in one PowerShell call ----------
