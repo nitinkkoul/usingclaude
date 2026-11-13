@@ -1,0 +1,6 @@
+{
+  "_note": "Public demo accounts shown on the saucedemo.com login page. Never put real credentials here.",
+  "standard": { "username": "standard_user", "password": "secret_sauce" },
+  "lockedOut": { "username": "locked_out_user", "password": "secret_sauce" },
+  "invalid": { "username": "wrong_user", "password": "wrong_password" }
+}
