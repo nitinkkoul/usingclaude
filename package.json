@@ -13,7 +13,11 @@
     "test:debug": "playwright test --ui",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit",
-    "bug-videos": "node scripts/record-bug-videos.mjs"
+    "bug-videos": "node scripts/record-bug-videos.mjs",
+    "test:dashboard": "node scripts/test-and-open-dashboard.mjs",
+    "allure": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "test:allure": "playwright test & npm run allure"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +26,8 @@
   "devDependencies": {
     "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.14.0",
     "typescript": "^7.0.2"
   },
   "dependencies": {

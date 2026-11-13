@@ -1,0 +1,6 @@
+{
+  "_note": "Fixed values shown on the checkout overview page (Checkout: Overview). taxRate observed in the app: tax = 8% of item total, rounded to cents.",
+  "paymentInfo": "SauceCard #31337",
+  "shippingInfo": "Free Pony Express Delivery!",
+  "taxRate": 0.08
+}

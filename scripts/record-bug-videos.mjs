@@ -20,7 +20,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-const OUT = path.join(ROOT, 'docs', 'bug-videos');
+const outDir = (id) => path.join(ROOT, 'docs', id.startsWith('TC-') ? 'test-case-videos' : 'bug-videos');
 const BASE_URL = process.env.UI_BASE_URL ?? 'https://www.saucedemo.com';
 const users = JSON.parse(fs.readFileSync(path.join(ROOT, 'test-data', 'users.json'), 'utf8'));
 const products = JSON.parse(fs.readFileSync(path.join(ROOT, 'test-data', 'products.json'), 'utf8'));
@@ -47,7 +47,7 @@ async function resetAppState(page) {
 }
 
 function check(condition, message) {
-  if (!condition) throw new Error(`Bug did not reproduce: ${message}`);
+  if (!condition) throw new Error(`Did not reproduce: ${message}`);
 }
 
 const backpackButton = (page) =>
@@ -146,6 +146,7 @@ const BUGS = {
       await say('Expected: each page has one main heading with its title. Actual: no headings at all, so screen-reader users cannot jump to the title.');
     },
   },
+
 };
 
 // ---------- text-to-speech (Windows System.Speech), all clips in one PowerShell call ----------
@@ -203,6 +204,7 @@ function findFfmpeg() {
 
 // ---------- record one bug ----------
 async function record(browser, id, bug) {
+  const OUT = outDir(id);
   // Dry pass collects the caption lines so all narration can be generated up front.
   const lines = [];
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), `${id}-`));
@@ -238,6 +240,7 @@ async function record(browser, id, bug) {
         document.body.append(box, tag);
       }
       document.getElementById('__bug_tag').textContent = bugId;
+      document.getElementById('__bug_tag').style.background = bugId.startsWith('TC-') ? '#2e7d32' : '#c62828';
       box.textContent = caption;
     }, [id, text]);
     cues.push({ start: Date.now() - t0, ms, text, pcm: clip });

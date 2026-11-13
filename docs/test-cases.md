@@ -93,6 +93,40 @@
 - **Expected Result**: Status 200.
 - **Automation**: Automated: tests/api/posts.spec.ts › DELETE removes a post
 
+### TC-009: Order with three items added across two visits to the cart
+- **Module**: Checkout
+- **Category**: Happy Path
+- **Priority**: P0 critical
+- **Preconditions**: Logged in as standard_user; cart is empty; on the Products page.
+- **Test Data**: Products: Sauce Labs Backpack ($29.99), Sauce Labs Onesie ($7.99), Test.allTheThings() T-Shirt (Red) ($15.99). Customer: First Name Asha, Last Name Verma, Postal Code 110001
+- **Steps**:
+  1. Click 'Add to cart' on Sauce Labs Backpack and on Sauce Labs Onesie; the cart badge shows 2.
+  2. Click the cart icon; the cart lists Sauce Labs Backpack and Sauce Labs Onesie.
+  3. Click 'Continue Shopping'; the Products page opens.
+  4. Click 'Add to cart' on Test.allTheThings() T-Shirt (Red); the cart badge shows 3.
+  5. Click the cart icon; the cart lists all three items.
+  6. Click 'Checkout'.
+  7. Enter First Name, Last Name and Postal Code, then click 'Continue'.
+  8. On 'Checkout: Overview', check Payment Information, Shipping Information and Price Total.
+  9. Click 'Finish'.
+- **Expected Result**: Cart lists Sauce Labs Backpack, Sauce Labs Onesie and Test.allTheThings() T-Shirt (Red). Overview shows Payment Information 'SauceCard #31337', Shipping Information 'Free Pony Express Delivery!', Item total: $53.97, Tax: $4.32, Total: $58.29. After Finish, 'Thank you for your order!' is shown and the cart badge is gone.
+- **Automation**: Automated: tests/ui/multi-item-checkout.spec.ts › user adds items across two visits to the cart and completes the order
+
+### TC-010: Item added, then sorted by price, can be removed from the cart leaving it empty
+- **Module**: Cart
+- **Category**: Happy Path
+- **Priority**: P2 medium
+- **Preconditions**: Logged in as standard_user; cart is empty; on the Products page.
+- **Test Data**: Product = Sauce Labs Bike Light ($9.99); sort option = Price (high to low)
+- **Steps**:
+  1. Click 'Add to cart' on Sauce Labs Bike Light; its button changes to 'Remove' and the cart badge shows 1.
+  2. In the 'Sort products' dropdown choose 'Price (high to low)'.
+  3. Click the cart icon.
+  4. On 'Your Cart', click 'Remove' next to Sauce Labs Bike Light.
+  5. Check the cart list and the cart badge.
+- **Expected Result**: After step 2 the products are ordered Sauce Labs Fleece Jacket ($49.99), Sauce Labs Backpack ($29.99), Sauce Labs Bolt T-Shirt ($15.99), Test.allTheThings() T-Shirt (Red) ($15.99), Sauce Labs Bike Light ($9.99), Sauce Labs Onesie ($7.99), and the Bike Light still shows 'Remove' with the badge at 1. After step 3 the page title is 'Your Cart' and it lists only Sauce Labs Bike Light ($9.99, QTY 1). After step 4 no items are listed and the cart badge is gone (cart icon reads 'Cart, empty'); 'Continue Shopping' and 'Checkout' are still shown.
+- **Automation**: Automated: tests/ui/inventory.spec.ts › cart keeps item after sorting and empties after Remove
+
 ### TC-101: Login error message is programmatically exposed and readable by assistive tech
 - **Module**: Login
 - **Category**: Business Rule
@@ -154,6 +188,19 @@
   1. Send GET /posts with query userId=2.
 - **Expected Result**: Status is OK; at least one post is returned and every post has userId 2.
 - **Automation**: Automated: tests/api/posts.spec.ts › GET posts filtered by user
+
+### TC-106: Added item stays in cart after Z to A sort
+- **Module**: Inventory
+- **Category**: Business Rule
+- **Priority**: P2 medium
+- **Preconditions**: Logged in as standard_user; cart is empty; on the Products page (default sort 'Name (A to Z)').
+- **Test Data**: Product = Sauce Labs Backpack ($29.99); sort option = Name (Z to A)
+- **Steps**:
+  1. Click 'Add to cart' on Sauce Labs Backpack; its button changes to 'Remove' and the cart icon reads 'Cart, 1 items'.
+  2. In the 'Sort products' dropdown choose 'Name (Z to A)'.
+  3. Read the product names top to bottom and check the Backpack button and the cart badge.
+- **Expected Result**: After step 2 the products are ordered Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie, Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt, Sauce Labs Bike Light, Sauce Labs Backpack. Test.allTheThings() T-Shirt (Red) is first and Sauce Labs Backpack is last; the Backpack still shows 'Remove' and the cart badge stays at 1.
+- **Automation**: Automated: tests/ui/inventory.spec.ts › added item stays in cart after Z to A sort
 
 ### TC-200: Invalid credentials and empty required fields display consistent, understandable messaging
 - **Module**: Login

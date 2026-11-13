@@ -10,7 +10,14 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 5_000 },
 
-  reporter: [['list'], ['html', { open: 'never' }]],
+  // results.json feeds the "Last test run" card on the coverage dashboard.
+  // allure-results/ is turned into the Allure report with `npm run allure`.
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    ['json', { outputFile: 'reports/results.json' }],
+    ['allure-playwright', { resultsDir: 'allure-results', detail: true, suiteTitle: true }],
+  ],
 
   use: {
     // saucedemo puts data-test="..." on its elements, so getByTestId() reads that attribute
