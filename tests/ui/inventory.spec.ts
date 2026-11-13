@@ -44,6 +44,25 @@ test.describe('Products & cart', () => {
     await expect(cartPage.cartBadge).toBeHidden();
   });
 
+  // TC-106
+  test('added item stays in cart after Z to A sort', { tag: '@regression' }, async ({ inventoryPage }) => {
+    const { backpack, redTShirt } = products;
+
+    // 1. Add Sauce Labs Backpack
+    await inventoryPage.addToCart(backpack.name);
+    await expect(inventoryPage.cartButton(backpack.name)).toHaveText('Remove');
+    await expect(inventoryPage.cartBadge).toHaveText('1');
+
+    // 2. Sort by Name (Z to A)
+    await inventoryPage.sortBy('za');
+
+    // 3. Red T-Shirt is first, Backpack is last; the cart is unchanged
+    await expect(inventoryPage.itemNames.first()).toHaveText(redTShirt.name);
+    await expect(inventoryPage.itemNames.last()).toHaveText(backpack.name);
+    await expect(inventoryPage.cartButton(backpack.name)).toHaveText('Remove');
+    await expect(inventoryPage.cartBadge).toHaveText('1');
+  });
+
   test('sorts by name Z to A', { tag: '@regression' }, async ({ inventoryPage }) => {
     await inventoryPage.sortBy('za');
 

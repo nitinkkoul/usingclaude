@@ -200,7 +200,7 @@
   2. In the 'Sort products' dropdown choose 'Name (Z to A)'.
   3. Read the product names top to bottom and check the Backpack button and the cart badge.
 - **Expected Result**: After step 2 the products are ordered Test.allTheThings() T-Shirt (Red), Sauce Labs Onesie, Sauce Labs Fleece Jacket, Sauce Labs Bolt T-Shirt, Sauce Labs Bike Light, Sauce Labs Backpack. Test.allTheThings() T-Shirt (Red) is first and Sauce Labs Backpack is last; the Backpack still shows 'Remove' and the cart badge stays at 1.
-- **Automation**: Candidate @regression
+- **Automation**: Automated: tests/ui/inventory.spec.ts › added item stays in cart after Z to A sort
 
 ### TC-200: Invalid credentials and empty required fields display consistent, understandable messaging
 - **Module**: Login
